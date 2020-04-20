@@ -1,0 +1,111 @@
+﻿@model Movies.Web.Models.Movies.Details
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="col-md-1">
+    <a href="@Url.Action("Index", new{ searchString= @TempData["SearchString"], searchYear = @TempData["SearchYear"], pageNumber = @TempData["PageNumber"]})" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Back</a>
+</div>
+<header class="title-header">
+    <h3>@Model.Title</h3>
+</header>
+<div class="col-lg-3 col-md-4 col-sm-6">
+    <div class="img-card">
+        <img src="@Model.Poster" alt="Movie" class="w-100">
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-1">Year</div>
+    <div class="col-md-7">@Model.Year</div>
+</div>
+<div class="row">
+    <div class="col-md-1">Rated</div>
+    <div class="col-md-7">@Model.Rated</div>
+</div>
+<div class="row">
+    <div class="col-md-1">Released</div>
+    <div class="col-md-7">@Model.Released</div>
+</div>
+<div class="row">
+    <div class="col-md-1">Runtime</div>
+    <div class="col-md-7">@Model.Runtime</div>
+</div>
+<div class="row">
+    <div class="col-md-1">Genre</div>
+    <div class="col-md-7">@Model.Genre</div>
+</div>
+<div class="row">
+    <div class="col-md-1">Director</div>
+    <div class="col-md-7">@Model.Director</div>
+</div>
+<div class="row">
+    <div class="col-md-1">Writer</div>
+    <div class="col-md-7">@Model.Writer</div>
+</div>
+<div class="row">
+    <div class="col-md-1">Actors</div>
+    <div class="col-md-7">@Model.Actors</div>
+</div>
+<div class="row">
+    <div class="col-md-1">Plot</div>
+    <div class="col-md-7">@Model.Plot</div>
+</div>
+<div class="row">
+    <div class="col-md-1">Language</div>
+    <div class="col-md-7">@Model.Language</div>
+</div>
+<div class="row">
+    <div class="col-md-1">Country</div>
+    <div class="col-md-7">@Model.Country</div>
+</div>
+<div class="row">
+    <div class="col-md-1">Awards</div>
+    <div class="col-md-7">@Model.Awards</div>
+</div>
+<div class="row">
+    <div class="col-md-1">Ratings</div>
+    <div class="col-md-7">
+        @foreach (var rating in Model.Ratings)
+        {
+            <div class="row">
+                <div class="col-md-7">
+                    @rating.Source: @rating.Value
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-1">Metascore</div>
+    <div class="col-md-7">@Model.Metascore</div>
+</div>
+<div class="row">
+    <div class="col-md-1">ImdbRating</div>
+    <div class="col-md-7">@Model.ImdbRating</div>
+</div>
+<div class="row">
+    <div class="col-md-1">ImdbVotes</div>
+    <div class="col-md-7">@Model.ImdbVotes</div>
+</div>
+<div class="row">
+    <div class="col-md-1">Type</div>
+    <div class="col-md-7">@Model.Type</div>
+</div>
+<div class="row">
+    <div class="col-md-1">BoxOffice</div>
+    <div class="col-md-7">@Model.BoxOffice</div>
+</div>
+<div class="row">
+    <div class="col-md-1">DVD</div>
+    <div class="col-md-7">@Model.DVD</div>
+</div>
+<div class="row">
+    <div class="col-md-1">Production</div>
+    <div class="col-md-7">@Model.Production</div>
+</div>
+<div class="row">
+    <div class="col-md-1">Website</div>
+    <div class="col-md-7">@Model.Website</div>
+</div>

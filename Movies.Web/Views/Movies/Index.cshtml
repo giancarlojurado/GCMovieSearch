@@ -1,0 +1,55 @@
+﻿@model Movies.Web.Models.Movies.SearchResults
+@{
+    ViewData["Title"] = "Movies List";
+}
+<section class="movies" id="movies">
+    <h2>Search Movies</h2>
+    <form asp-controller="Movies" asp-action="Index" class="form-inline">
+        <p>
+            <div class="col-md-3">
+                Title: <input type="text" name="SearchString" class="form-control" value="@ViewData["SearchString"]">
+            </div>
+            <div class="col-md-3">
+                Year: <input type="text" name="SearchYear" class="form-control" value="@ViewData["SearchYear"]">
+            </div>
+            <input type="submit" value="Search" class="btn btn-primary"/>
+        </p>
+    </form>
+    @if (Model.TotalItems > 0)
+    {
+        <p>
+            Found @Model.TotalItems movies!
+        </p>
+        <p>
+            Page @Model.CurrentPage of @Model.TotalPages
+        </p>
+    }
+    <div class="row">
+        @foreach (var movie in Model.Results)
+        {
+            <partial name="MovieResult" model="movie"/>
+        }
+    </div>
+
+    @{
+        var prevDisabled = Model.CurrentPage <= 1 ? "disabled" : "";
+        var nextDisabled = Model.CurrentPage >= Model.TotalPages ? "disabled" : "";
+    }
+    
+    <br/>
+        <a asp-action="Index"
+           asp-route-searchString="@ViewData["SearchString"]"
+           asp-route-SearchYear="@ViewData["SearchYear"]"
+           asp-route-pageNumber="@(Model.CurrentPage - 1)"
+           class="btn btn-primary @prevDisabled">
+            Previous
+        </a>
+        <a asp-action="Index"
+           asp-route-searchString="@ViewData["SearchString"]"
+           asp-route-SearchYear="@ViewData["SearchYear"]"
+           asp-route-pageNumber="@(Model.CurrentPage + 1)"
+           class="btn btn-primary @nextDisabled">
+            Next
+        </a>
+    
+</section>
